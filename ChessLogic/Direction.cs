@@ -21,6 +21,12 @@ namespace ChessLogic
             ColumnDelta = columnDelta;
         }
 
+        //it will be convenient to have an ability to add two directions together => for that we will override + operator
+        public static Direction operator +(Direction dir1, Direction dir2)
+        {
+            return new Direction(dir1.RowDelta + dir2.RowDelta, dir1.ColumnDelta + dir2.ColumnDelta);
+        }
 
+        //override * operator as well so that we can scale a direction
     }
 }
