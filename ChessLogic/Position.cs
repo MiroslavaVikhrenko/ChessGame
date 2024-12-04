@@ -39,5 +39,29 @@ namespace ChessLogic
             return Player.Black;
         }
 
+        //we also need to override equals and gethashcode so the Position class can be used as a key in a dictionary
+        public override bool Equals(object obj)
+        {
+            return obj is Position position &&
+                   Row == position.Row &&
+                   Column == position.Column;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Row, Column);
+        }
+
+        public static bool operator ==(Position left, Position right)
+        {
+            return EqualityComparer<Position>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(Position left, Position right)
+        {
+            return !(left == right);
+        }
+
+
     }
 }
