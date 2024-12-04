@@ -21,7 +21,7 @@
         //Method to find Opponent, it takes a player as parameter and returns that player's opponent
         public static Player Opponent(this Player player)
         {
-            //We switch on the player parameter 
+            //We switch on the player parameter => using 'switch' expression available for newer version 
             return player switch
             {
                 //if it's player White => we return player Black
