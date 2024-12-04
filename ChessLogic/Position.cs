@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ChessLogic
+﻿namespace ChessLogic
 {
     //this class represents a position or square on the board
     public class Position
@@ -62,6 +56,11 @@ namespace ChessLogic
             return !(left == right);
         }
 
-
+        //overload + operator
+        public static Position operator +(Position pos, Direction dir)
+        {
+            //returns the position you get by taking one step in the given direction
+            return new Position(pos.Row + dir.RowDelta, pos.Column + dir.ColumnDelta);
+        }
     }
 }
