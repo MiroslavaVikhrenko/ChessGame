@@ -71,5 +71,11 @@ namespace ChessLogic
                 this[6, c] = new Pawn(Player.White);
             }
         }
+
+        //Method to check if position is valid - convenient for move generation
+        public static bool IsInside(Position pos)
+        {
+            return pos.Row >= 0 && pos.Row < 8 && pos.Column >= 0 && pos.Column < 8;
+        }
     }
 }
