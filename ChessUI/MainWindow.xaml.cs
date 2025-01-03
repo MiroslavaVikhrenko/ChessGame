@@ -20,10 +20,19 @@ namespace ChessUI
         //create a 2d array for the image controls
         //it must have 8 rows and 8 columns to match the board
         private readonly Image[,] pieceImages = new Image[8, 8];
+
+        //add GameState
+        private GameState gameState;
         public MainWindow()
         {
             InitializeComponent();
             InitializeBoard();
+
+            //initialize gameState, white starts the game (Player.White) + we pass the initial board (Board.Initial())
+            gameState = new GameState(Player.White, Board.Initial());
+
+            //draw the board
+            DrawBoard(gameState.Board);
         }
 
         private void InitializeBoard()
