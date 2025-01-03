@@ -42,5 +42,23 @@ namespace ChessUI
             }
             //we will call InitializeBoard() from the constructor after InitializeComponent()
         }
+
+        //Method to draw a Board, it takes a board as a parameter and sets the source of all image controls
+        //so they match the pieces on that board
+        //With the pieceImages array and Images class it's easy to do
+        private void DrawBoard(Board board)
+        {
+            //going through each position
+            for (int r = 0;r < 8; r++)
+            {
+                for (int c = 0;c < 8;c++)
+                {
+                    //grad the piece at that position 
+                    Piece piece = board[r, c];
+                    //update the source of the corresponding image control accordingly
+                    pieceImages[r, c].Source = Images.GetImage(piece);
+                }
+            }
+        }
     }
 }
