@@ -77,5 +77,11 @@ namespace ChessLogic
         {
             return pos.Row >= 0 && pos.Row < 8 && pos.Column >= 0 && pos.Column < 8;
         }
+
+        //Method to check if there is a piece on the given position
+        public bool IsEmpty(Position pos)
+        {
+            return this[pos] == null;
+        }
     }
 }
