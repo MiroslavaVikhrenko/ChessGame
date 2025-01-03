@@ -27,5 +27,49 @@ namespace ChessLogic
             get { return this[pos.Row, pos.Column]; }
             set { this[pos.Row, pos.Column] = value; }
         }
+
+        //to create a board without any pieces on it => the default constructor already does that
+        //instead of creating a custom constructor I create a static method Initial()
+        //Method to return a board with all the pieces set up correctly to start the game
+        public static Board Initial()
+        {
+            //first create a new empty board
+            Board board = new Board();
+
+            //next - add all the pieces
+            board.AddStartPieces();
+
+            return board;
+        }
+
+        private void AddStartPieces()
+        {
+            //add the black pieces in the top row
+            this[0, 0] = new Rook(Player.Black);
+            this[0, 1] = new Knight(Player.Black);
+            this[0, 2] = new Bishop(Player.Black);
+            this[0, 3] = new Queen(Player.Black);
+            this[0, 4] = new King(Player.Black);
+            this[0, 5] = new Bishop(Player.Black);
+            this[0, 6] = new Knight(Player.Black);
+            this[0, 7] = new Rook(Player.Black);
+
+            //add the white pieces in the bottom row
+            this[7, 0] = new Rook(Player.White);
+            this[7, 1] = new Knight(Player.White);
+            this[7, 2] = new Bishop(Player.White);
+            this[7, 3] = new Queen(Player.White);
+            this[7, 4] = new King(Player.White);
+            this[7, 5] = new Bishop(Player.White);
+            this[7, 6] = new Knight(Player.White);
+            this[7, 7] = new Rook(Player.White);
+
+            //add the pawns for both players
+            for (int c = 0; c < 8; c++)
+            {
+                this[1,c] = new Pawn(Player.Black);
+                this[6, c] = new Pawn(Player.White);
+            }
+        }
     }
 }
