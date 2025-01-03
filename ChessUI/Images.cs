@@ -41,6 +41,30 @@ namespace ChessUI
         private static ImageSource LoadImage(string filePath)
         {
             return new BitmapImage(new Uri(filePath,UriKind.Relative));
-        }        
+        }
+        
+        //Method to get images, it takes the color and type of piece and returns the corresponsing image
+        public static ImageSource GetImage(Player color, PieceType type)
+        {
+            //switch on a color - depending on the color we look up in white or black sources
+            //otherwise return null
+            return color switch
+            {
+                Player.White => whiteSources[type],
+                Player.Black => blackSources[type],
+                _ => null
+            };
+        }
+
+        //overload of GetImage() which takes a piece
+        public static ImageSource GetImage(Piece piece)
+        {
+            if (piece == null)
+            {
+                return null;
+            }
+            //otherwise use the other overload to get the right image
+            return GetImage(piece.Color, piece.Type);
+        }
     }
 }
