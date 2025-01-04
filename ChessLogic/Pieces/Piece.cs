@@ -13,5 +13,8 @@ namespace ChessLogic
         //we need HasMoved because some moves are only legal if a piece has not moved yet
         public bool HasMoved { get; set; } = false; 
         public abstract Piece Copy();
+        //the method returns a collection containing all the moves it can make
+        //the position parameter is required because the pieces don't store their own position on the board       
+        public abstract IEnumerable<Move> GetMoves(Position from, Board board);
     }
 }
