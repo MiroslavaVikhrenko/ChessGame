@@ -18,5 +18,18 @@ namespace ChessLogic
             FromPos = from;
             ToPos = to;
         }
+
+        public override void Execute(Board board)
+        {
+            //the code that actually make the move happen : need to take the piece at "from" position and move it to "to" position
+            //first take the piece at "from" position
+            Piece piece = board[FromPos];
+            //then place it to "to" position
+            board[ToPos] = piece;
+            //remove it from its original position
+            board[FromPos] = null;
+            //set the piece's HasMoved property to "true"
+            piece.HasMoved = true;
+        }
     }
 }
